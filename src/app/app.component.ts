@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'quiz-app';
+  difficultyLevel = 'easy';
+  isQuizStart = false;
+
+  selectChange(value: string) {
+    this.difficultyLevel = value;
+  }
+
+  startQuiz() {
+    this.isQuizStart = true;
+  }
 }

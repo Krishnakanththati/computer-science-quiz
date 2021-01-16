@@ -1,0 +1,31 @@
+.container {
+    max-width: 600px;
+    border: 1px solid #3c3c3c;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 50px;
+    position: relative;
+    min-height: 300px;
+}
+
+.select-quizbox {
+    h3 {
+        font-size: 16px;
+        margin: 0;
+        margin-bottom: 12px;
+    }
+    select {
+        height: 32px;
+        background-color: transparent;
+        border: 1px solid #3c3c3c;
+        cursor: pointer;
+        width: 100%;
+        padding: 0 12px;
+        margin-bottom: 12px;
+    }
+    button {
+        height: 32px;
+        padding: 0 16px;
+        cursor: pointer;
+    }
+}

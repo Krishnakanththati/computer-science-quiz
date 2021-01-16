@@ -1,0 +1,58 @@
+<div *ngIf="!isLoading">
+    <ng-container *ngIf="!quizCompleted">
+        <div class="header">
+            <div>
+                <h3>
+                    Score
+                </h3>
+                <h4>
+                    {{correctAns}}/10
+                </h4>
+            </div>
+            <div>
+                <p>
+                    Question {{questionCount + 1}} of 10
+                </p>
+            </div>
+            <div>
+                <h3>Time</h3>
+                <h4>0:{{timerLimite > 9 ? timerLimite : '0' + timerLimite}}</h4>
+            </div>
+        </div>
+        <div class="qa-block">
+            <h2 [innerHTML]="currentQuestion?.question"></h2>
+            <ul [ngClass]="{'cursorP': !currentQuestion?.isSelected}">
+                <li *ngFor="let item of currentQuestion?.options;let i = index">
+                    <div class="select-box" [ngClass]="{'success': currentQuestion?.isSelected && item === currentQuestion?.correct_answer, 'error' : currentQuestion?.isSelected && currentQuestion?.correct_answer !== item && item === currentQuestion.selectedAns }"
+                        (click)="selectAns(item)">
+                        <p>
+                            {{i + 1}}.
+                        </p>
+                        <p [innerHTML]="item"></p>
+                    </div>
+                    <p class="error-text" *ngIf="currentQuestion?.isSelected && currentQuestion?.correct_answer !== item && item === currentQuestion.selectedAns">
+                        That's wrong. The correct answer is
+                    </p>
+                </li>
+            </ul>
+            <div *ngIf="questionCount < 9" class="next-b">
+                <button (click)="nextQuestion()">Next</button>
+            </div>
+        </div>
+    </ng-container>
+    <div *ngIf="quizCompleted">
+        <h2>
+            Results
+        </h2>
+        <h3>
+            You scored {{correctAns}}
+        </h3>
+        <button (click)="getData()">
+            Start Quiz again
+        </button>
+    </div>
+</div>
+
+<div class="loading-block" *ngIf="isLoading">
+    <h3>Loading...</h3>
+</div>
